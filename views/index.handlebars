@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-6">
+
+            <div class="row justify-content-md-center">
+                <h2>Sign up</h2>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <form class="signup-form">
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" name="username">
+                        <br>
+                        <label for="signup-password">Password </label>
+                        <input type="password" id="signup-password" name="email">
+                        <br>                        
+                        <button type="button submit" class="btn btn-warning">Sign up</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="col-6">
+            <div class="row justify-content-md-center">
+                <h2>Users</h2>
+            </div>
+
+            <ul>
+                {{#each users}}
+                <li>
+                    <p>
+                        {{dataValues.id}}. username:{{dataValues.username}} password:{{dataValues.password}}
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+
+    </div>
+</div>
