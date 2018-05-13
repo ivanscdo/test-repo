@@ -40,15 +40,15 @@ $(function() {
             console.log(URL.createObjectURL(file));
             $("#output")
                 .attr("src", URL.createObjectURL(file))
-                .width("100px")
-                .height("100px");
+                .width("150px")
+                .height("150px");
         }
     // END OF: function doSomethingWithFiles(fileList) {
     }
 
     // const fileInput = document.getElementById('file-input');
     // fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
-    $("#image-capture").change(function(event) {
+    $("#image-capture-input").change(function(event) {
         // console.log("image-capture fired!");
         
         var fileList  = event.target.files;
@@ -63,8 +63,6 @@ $(function() {
 
         // $("#show-picture").attr(src="");
     });
-
-
 
 
 // END OF: $(function() {
