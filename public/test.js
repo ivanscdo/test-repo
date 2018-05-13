@@ -10,12 +10,43 @@ $(function() {
         console.log("-newUser-");
         console.log(newUser);
         
-    
-        $.post("/api/test", newUser).then(function(data) {
-            console.log("-$.post:data-");
-            console.log(data)
-            location.reload();
-        });
+        // routes/api-routes.js
+        // $.post("/api/test", newUser).then(function(data) {
+        //     console.log("-$.post:data-");
+        //     console.log(data)
+        //     location.reload();
+        // });
+
+        // TEST 1:routes/fetch-route.js
+        // fetch("./api/test", {
+        //     method: 'post',
+        //     // headers: {
+        //     //   "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        //     // },
+        //     body: newUser
+        //   })
+        //   .then(json)
+        //   .then(function (data) {
+        //     console.log('Request succeeded with JSON response', data);
+        //   })
+        //   .catch(function (error) {
+        //     console.log('Request failed', error);
+        //   });
+
+        // TEST 2: 
+        fetch('/api/test', {
+            method: 'POST',
+            body: newUser
+          }).then(
+            response => response.json() // if the response is a JSON object
+          ).then(
+            success => console.log(success) // Handle the success response object
+          ).catch(
+            error => console.log(error) // Handle the error response object
+          );
+
+        
+    //END OF: $(".signup-form").on("submit", function(event) {
     });
 
 
@@ -63,6 +94,16 @@ $(function() {
 
         // $("#show-picture").attr(src="");
     });
+
+    // $("#fetch-button").on("click", function(event) {
+    //     console.log("fetch-button clicked!");
+
+    //     fetch('/api/test', {
+    //         method: 'POST',
+    //         body: data
+    //       })
+
+    // })
 
 
 // END OF: $(function() {
