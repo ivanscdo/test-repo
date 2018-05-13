@@ -38,7 +38,10 @@ $(function() {
             // output.src = URL.createObjectURL(file);
             console.log("-URL.createObjectURL(file)-");            
             console.log(URL.createObjectURL(file));
-            $("#output").attr("src", URL.createObjectURL(file));  
+            $("#output")
+                .attr("src", URL.createObjectURL(file))
+                .width("100px")
+                .height("100px");
         }
     // END OF: function doSomethingWithFiles(fileList) {
     }
