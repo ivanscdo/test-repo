@@ -24,7 +24,7 @@
             <div class="row justify-content-md-center">
                 <h2>Sign up</h2>
             </div>
-            <form>
+            <form class="signup-form">
                 <div class="form-group">
                     <label for="signup-username">Username</label>
                     <input type="text" class="form-control" id="signup-username" placeholder="Enter Username">
@@ -63,13 +63,26 @@
 
     </div>
 
+
     <br>
 
 
     <div class="row">
         <div class="col-6">
-            <input type="file" id="take-picture" accept="image/*">
+            <input type="file" accept="image/*" id="image-capture">
         </div>
+
+        <div class="col-6">
+            {{!-- <div id="target">You can drag an image file here</div> --}}
+            {{!-- <img id="show-picture" src="" alt=""> --}}  
+
+            <div class="row justify-content-md-center">
+                <img id="output">             
+            </div>   
+
+         </div>
     </div>
+
+
 
 </div>
