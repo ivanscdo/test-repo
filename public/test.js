@@ -11,11 +11,11 @@ $(function() {
         console.log(newUser);
         
         // routes/api-routes.js
-        $.post("/api/test", newUser).then(function(data) {
-            console.log("-$.post:data-");
-            console.log(data)
-            location.reload();
-        });
+        // $.post("/api/test", newUser).then(function(data) {
+        //     console.log("-$.post:data-");
+        //     console.log(data)
+        //     location.reload();
+        // });
 
         // TEST 1:routes/fetch-route.js
         // fetch("./api/test", {
