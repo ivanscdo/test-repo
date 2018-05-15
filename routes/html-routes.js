@@ -1,6 +1,10 @@
 var express = require("express"),
     router  = express.Router(),
-    db      = require("../models");
+    db      = require("../models"),
+    fetch   = require("node-fetch");
+
+
+    
 
 router.get("/", function(req, res) {
     // res.send("red wine, success!");
@@ -15,5 +19,31 @@ router.get("/", function(req, res) {
         res.render("index", hbObj);
     });
 });
-
 module.exports = router;
+
+
+// function fetch() {
+//     fetch('http://localhost:3000/')
+//     .then(function(res){
+//         db.Test.findAll({}).then(function(data){
+//             var hbObj = {
+//                 users: data
+//             };
+//             res.render("index", hbObj);
+//         });
+//     });
+    
+// }
+
+
+    // fetch('https://randomuser.me/api/?results=10')
+    // .then(function(data) {
+    //     data.json();
+    // })
+
+
+
+
+
+// module.exports = fetch;
+

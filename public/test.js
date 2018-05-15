@@ -36,14 +36,23 @@ $(function() {
         // TEST 2: 
         fetch('/api/test', {
             method: 'POST',
-            body: newUser
-          }).then(
-            response => response.json() // if the response is a JSON object
-          ).then(
-            success => console.log(success) // Handle the success response object
-          ).catch(
-            error => console.log(error) // Handle the error response object
-          );
+            body: JSON.stringify(newUser),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+              })
+          }
+        ).then(function(res){
+            console.log(res);
+            res.json();
+            // location.reload();
+        });
+        // .then(
+        //     response => response.json() // if the response is a JSON object
+        //   ).then(
+        //     success => console.log(success) // Handle the success response object
+        //   ).catch(
+        //     error => console.log(error) // Handle the error response object
+        //   );
 
         
     //END OF: $(".signup-form").on("submit", function(event) {
@@ -95,15 +104,22 @@ $(function() {
         // $("#show-picture").attr(src="");
     });
 
-    // $("#fetch-button").on("click", function(event) {
-    //     console.log("fetch-button clicked!");
+    $("#fetch-button").on("click", function(event) {
+        console.log("fetch-button clicked!");
 
-    //     fetch('/api/test', {
-    //         method: 'POST',
-    //         body: data
-    //       })
+        // fetch('/api/test', {
+        //     method: 'POST',
+        //     body: data
+        //   });
 
-    // })
+        // fetch("https://jsonplaceholder.typicode.com/posts")
+        // .then(res => res.json())
+        // .then(posts => console.log(posts));
+
+        // fetch("https://storage.googleapis.com/snavdeepsingh/bird.jpg")
+        // .then(res => res.send);
+
+    })
 
 
 // END OF: $(function() {
