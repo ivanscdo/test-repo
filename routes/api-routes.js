@@ -17,5 +17,14 @@ router.post("/api/test", function(req, res) {
     // .catch(error)
 });
 
+router.post("/api/birdpic", function(req, res) {
+    db.BirdPic.create({
+        picname: req.body.picname, 
+        picblob: req.body.picblob
+    }).then(function(data) {
+        res.json(data);
+    });
+});
+
 
 module.exports = router;

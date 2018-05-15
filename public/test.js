@@ -67,6 +67,10 @@ $(function() {
         // console.log("doSomethingWithFiles fired!");
 
         let file = null;
+
+        // for fetch post birdPic
+        // var formData = new FormData();
+        
     
         for (let i = 0; i < fileList.length; i++) {
             if (fileList[i].type.match(/^image\//)) {
@@ -76,16 +80,51 @@ $(function() {
         }
         console.log("-file-");
         console.log(file);
+        console.log("file.name");
+        console.log(file.name);
     
         if (file !== null) {
             // const output = document.getElementById('output');    
             // output.src = URL.createObjectURL(file);
-            console.log("-URL.createObjectURL(file)-");            
-            console.log(URL.createObjectURL(file));
-            $("#output")
-                .attr("src", URL.createObjectURL(file))
-                .width("150px")
-                .height("150px");
+            // console.log("-URL.createObjectURL(file)-");            
+            // console.log(URL.createObjectURL(file));
+            // $("#output")
+            //     .attr("src", URL.createObjectURL(file))
+            //     .width("150px")
+            //     .height("150px");
+
+            // formData.append('picname', 'test1');        
+            // formData.append('birdPic1', file);
+
+            // console.log("-formData-");
+            // console.log(formData);
+
+            // Test 1: fetch post bird pic
+            // fetch("/api/birdpic", {
+            //     method: 'POST', 
+            //     body: formData
+            //     // headers: new Headers({
+            //     //     'Content-Type': ''
+            //     // })
+            //   }
+            // ).then(function(res) {
+            //     console.log(res);
+            // })
+            var birdpic = {
+                picname: file.name,
+                picblob: file
+            };
+
+            fetch("/api/birdpic", {
+                method: 'POST', 
+                body: JSON.stringify(birdpic),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                  })
+              }
+            ).then(function(res) {
+                console.log(res);
+            })
         }
     // END OF: function doSomethingWithFiles(fileList) {
     }
@@ -99,7 +138,7 @@ $(function() {
         var fileList  = event.target.files;
         // console.log(event.target.files);
         console.log("-fileList-");
-        console.log(fileList[0]);
+        console.log(fileList);
 
         // var fileList_Arr = Array.from(event.target.files);
         // console.log(fileList_Arr);
@@ -136,3 +175,16 @@ $(function() {
 });
 
 
+// var formData = new FormData();
+// var fileField = document.querySelector("input[type='file']");
+
+// formData.append('username', 'abc123');
+// formData.append('avatar', fileField.files[0]);
+
+// fetch('https://example.com/profile/avatar', {
+//   method: 'PUT',
+//   body: formData
+// })
+// .then(response => response.json())
+// .catch(error => console.error('Error:', error))
+// .then(response => console.log('Success:', response));
