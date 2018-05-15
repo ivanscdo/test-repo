@@ -11,11 +11,11 @@ $(function() {
         console.log(newUser);
         
         // routes/api-routes.js
-        // $.post("/api/test", newUser).then(function(data) {
-        //     console.log("-$.post:data-");
-        //     console.log(data)
-        //     location.reload();
-        // });
+        $.post("/api/test", newUser).then(function(data) {
+            console.log("-$.post:data-");
+            console.log(data)
+            location.reload();
+        });
 
         // TEST 1:routes/fetch-route.js
         // fetch("./api/test", {
@@ -47,6 +47,10 @@ $(function() {
             // location.reload();
         });
         // .then(
+        // fetch('/api/test', {
+        //     method: 'POST',
+        //     body: newUser
+        //   }).then(
         //     response => response.json() // if the response is a JSON object
         //   ).then(
         //     success => console.log(success) // Handle the success response object
@@ -88,13 +92,14 @@ $(function() {
 
     // const fileInput = document.getElementById('file-input');
     // fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+
     $("#image-capture-input").change(function(event) {
         // console.log("image-capture fired!");
         
         var fileList  = event.target.files;
         // console.log(event.target.files);
         console.log("-fileList-");
-        console.log(fileList);
+        console.log(fileList[0]);
 
         // var fileList_Arr = Array.from(event.target.files);
         // console.log(fileList_Arr);
@@ -106,6 +111,11 @@ $(function() {
 
     $("#fetch-button").on("click", function(event) {
         console.log("fetch-button clicked!");
+    // var input = $("#image-capture-input")
+    // console.log(input.files);
+
+    // $("#fetch-button").on("click", function(event) {
+    //     console.log("fetch-button clicked!");
 
         // fetch('/api/test', {
         //     method: 'POST',
