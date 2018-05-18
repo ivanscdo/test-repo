@@ -112,18 +112,20 @@ $(function() {
             // })
             var birdpic = {
                 picname: file.name,
-                picblob: file
+                picURL: URL.createObjectURL(file)
             };
 
             fetch("/api/birdpic", {
                 method: 'POST', 
+                // body: file
                 body: JSON.stringify(birdpic),
                 headers: new Headers({
                     'Content-Type': 'application/json'
                   })
               }
             ).then(function(res) {
-                console.log(res);
+                // console.log(res);
+                console.log(res.blob());
             })
         }
     // END OF: function doSomethingWithFiles(fileList) {

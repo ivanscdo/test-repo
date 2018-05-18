@@ -44,7 +44,7 @@
         </div>
 
 
-        <div class="col-6">
+        {{!-- <div class="col-6">
             <div class="row justify-content-md-center">
                 <h2>Users</h2>
             </div>
@@ -58,7 +58,28 @@
                 </li>
                 {{/each}}
             </ul>
+        </div> --}}
+
+
+        <div class="col-6">
+            <div class="row justify-content-md-center">
+                <h2>Bird Pics</h2>
+            </div>
+            <ul>
+                {{#each pics}}
+                <li>
+                    <p>
+                        {{dataValues.picname}}
+                    </p>
+                    {{!-- <img src="{{dataValues.picblob}}" alt="" /> --}}
+                    <img src="{{dataValues.picURL}}" alt="" />
+                    
+                </li>
+                {{/each}}
+            </ul>
         </div>
+
+
 
 
     </div>

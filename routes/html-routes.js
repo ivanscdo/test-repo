@@ -6,21 +6,36 @@ var express = require("express"),
 
     
 
+// router.get("/", function(req, res) {
+//     // res.send("red wine, success!");
+//     db.Test.findAll({}).then(function(data){
+//         console.log("-db.Test:data-")
+//         console.log(data);
+
+//         var hbObj = {
+//             users: data
+//         };
+
+//         res.render("index", hbObj);
+//     });
+// });
+// module.exports = router;
+
 router.get("/", function(req, res) {
     // res.send("red wine, success!");
-    db.Test.findAll({}).then(function(data){
+    db.BirdPic.findAll({}).then(function(data){
         console.log("-db.Test:data-")
         console.log(data);
 
         var hbObj = {
-            users: data
+            pics: data
         };
 
-        res.render("index", hbObj);
+        res.render("bird-pic", hbObj);
+        // res.send(data)
     });
 });
 module.exports = router;
-
 
 // function fetch() {
 //     fetch('http://localhost:3000/')

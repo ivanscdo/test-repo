@@ -20,7 +20,8 @@ router.post("/api/test", function(req, res) {
 router.post("/api/birdpic", function(req, res) {
     db.BirdPic.create({
         picname: req.body.picname, 
-        picblob: req.body.picblob
+        picURL: req.body.picURL
+        // picblob: URL.createObjectURL(req.body)
     }).then(function(data) {
         res.json(data);
     });
