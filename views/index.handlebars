@@ -1,106 +1,28 @@
-<div class="container">
-    <div class="row">
-
-
-        <div class="col-6">
-
-            {{!-- <div class="row justify-content-md-center">
-                <h2>Sign up</h2>
-            </div>
-
-            <div class="row justify-content-md-center">
-                <form class="signup-form">
-                    <div class="form-group">
-                        <label for="signup-username">Username</label>
-                        <input type="text" id="signup-username" name="username">
-                        <br>
-                        <label for="signup-password">Password </label>
-                        <input type="password" id="signup-password" name="email">
-                        <br>                        
-                        <button type="button submit" class="btn btn-warning">Sign up</button>
-                    </div>
-                </form>
-            </div> --}}
-            <div class="row justify-content-md-center">
-                <h2>Sign up</h2>
-            </div>
-            <form class="signup-form">
-                <div class="form-group">
-                    <label for="signup-username">Username</label>
-                    <input type="text" class="form-control" id="signup-username" placeholder="Enter Username">
-                    {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" class="form-control" id="signup-password" placeholder="Password">
-                </div>
-                {{!-- <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> --}}
-                <button type="button submit" class="btn btn-success">Sign Up</button>
-            </form>            
-
-        </div>
-
-
-        <div class="col-6">
-            <div class="row justify-content-md-center">
-                <h2>Users</h2>
-            </div>
-
-            <ul>
-                {{#each users}}
-                <li>
-                    <p>
-                        {{dataValues.id}}. username:{{dataValues.username}} password:{{dataValues.password}}
-                    </p>
-                </li>
-                {{/each}}
-            </ul>
-        </div>
-
-
-    </div>
-
-
-    <br>
-
-
-    <div class="row">
-        <div class="col-6">
-            <input type="file" accept="image/*" id="image-capture-input" class="invisible" />
-            <br>
-            <label class="btn btn-info" for="image-capture-input">Snap a bird</label>
-
-            <br>
-
-            {{!-- <img id="output">   --}}
-
-        </div>
-
-        <div class="col-6">
-            {{!-- <div id="target">You can drag an image file here</div> --}}
-            {{!-- <img id="show-picture" src="" alt=""> --}}  
-
-            <div class="row justify-content-md-center">
-                <img id="output">             
-            </div>   
-
-         </div>
-    </div>
-
-    {{!-- <div class="row">
-        <div class="col-3">
-            <div class="row">
-                <h2>fetch()</h2>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-warning" id="fetch-button">fetch()</button>
-            </div>
-        </div>
-    </div> --}}
-
-
-
+<div class="bg-img"></div>
+<div class="container-fluid login-container">
+	<div class="row login-row">
+		<div class="col align-self-center">
+			<div class="login-wrapper">
+				<h1 class="text-center"><i class="fas fa-crow"></i>&nbsp;App Name</h1>
+				<form class="login-form">
+				  <div class="form-group" style="text-align: left">
+				    <label for="inputEmail">Email address</label>
+				    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+				  </div>
+				  <div class="form-group" style="text-align: left">
+				    <label for="inputPassword">Password</label>
+				    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+				  </div>
+					<div class="btn-group" role="group" aria-label="First group">
+						<button type="button" class="btn login-btn">Sign Up</button>
+						<button type="button" class="btn login-btn">Log In</button>
+					</div>
+				</form>
+				<hr>
+				<a href="/auth/google">
+					<button class="btn login-btn">Login with Google</button>
+				</a>
+			</div>
+		</div>
+	</div>
 </div>

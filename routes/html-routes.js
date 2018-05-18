@@ -1,64 +1,51 @@
-var express = require("express"),
-    router  = express.Router(),
-    db      = require("../models"),
-    fetch   = require("node-fetch");
+var db = require("../models");
+var passport = require('passport');
 
+module.exports = function(app) {
+  app.get("/", function(req, res) {
+    let handleBarsObj = {};
+      console.log(handleBarsObj);
+      res.render('index', handleBarsObj);
+  });
 
-    
+  app.get('/info', function(req, res) {
+  	if (req.user){
+  		let handleBarsObj = {
+	  		name: req.user.dataValues.username,
+	  		image: req.user.dataValues.profileIMG,
+	  	}
+	    return res.render("info", handleBarsObj);
+  	}
+  	return res.redirect('/')
+  })
 
-// router.get("/", function(req, res) {
-//     // res.send("red wine, success!");
-//     db.Test.findAll({}).then(function(data){
-//         console.log("-db.Test:data-")
-//         console.log(data);
+  app.get('/photos', function(req, res) {
+    if (req.user){
+      db.Image.findAll({
+        where: {
+          userId: req.user.dataValues.id
+        }
+      })
+      .then (photos => res.render("pictures", {
+        name: req.user.dataValues.username,
+        image: req.user.dataValues.profileIMG,
+        photos: photos
+      }))
+      .catch(err => res.redirect('/'))
+    } else {
+      return res.redirect('/')  
+    }
+  })
 
-//         var hbObj = {
-//             users: data
-//         };
-
-//         res.render("index", hbObj);
-//     });
-// });
-// module.exports = router;
-
-router.get("/", function(req, res) {
-    // res.send("red wine, success!");
-    db.BirdPic.findAll({}).then(function(data){
-        console.log("-db.Test:data-")
-        console.log(data);
-
-        var hbObj = {
-            pics: data
-        };
-
-        res.render("bird-pic", hbObj);
-        // res.send(data)
-    });
-});
-module.exports = router;
-
-// function fetch() {
-//     fetch('http://localhost:3000/')
-//     .then(function(res){
-//         db.Test.findAll({}).then(function(data){
-//             var hbObj = {
-//                 users: data
-//             };
-//             res.render("index", hbObj);
-//         });
-//     });
-    
-// }
-
-
-    // fetch('https://randomuser.me/api/?results=10')
-    // .then(function(data) {
-    //     data.json();
-    // })
-
-
-
-
-
-// module.exports = fetch;
-
+  app.get("/home", function(req, res){
+  	if (req.user){
+  		let handleBarsObj = {
+	  		name: req.user.dataValues.username,
+	  		image: req.user.dataValues.profileIMG,
+	  	}
+	    return res.render("home", handleBarsObj);
+  	}
+  	return res.redirect('/')
+  	
+	});
+};
