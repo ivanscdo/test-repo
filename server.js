@@ -1,27 +1,43 @@
-var express     = require("express"),
-    app         = express(),
-    bodyParser  = require("body-parser"),
-    exphbs      = require("express-handlebars"),      
-    htmlRoutes  = require("./routes/html-routes"),
-    apiRoutes   = require("./routes/api-routes"),
-    fetchRoute  = require("./routes/fetch-route"),
-    PORT        = process.env.PORT || 3000,    
-    db          = require("./models");
+var express = require("express");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
+var cookieSession = require('cookie-session')
+var passport = require('passport');
 
+var passportSetup = require('./config/passport-setup.js');
+var keys = require('./config/keys.js')
+
+
+var PORT = process.env.PORT || 3000;
+var app = express();
+
+var db = require("./models");
 app.use(express.static("public"));
 
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.engine("handlebars", exphbs({defaultLayout: "main" }));
+app.use(cookieSession({
+	maxAge: 24 * 60 * 60 * 1000,
+	keys: [keys.session.cookieKey]
+}))
+
+// For Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-app.use(apiRoutes);
-// app.use(fetchRoute);
-app.use(htmlRoutes);
+require('./routes/auth-routes.js')(app);
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+require("./routes/google-storage-routes.js")(app);
 
-db.sequelize.sync({force:true}).then(function() {
-    app.listen(PORT, function() {
-        console.log("App listening on: http://localhost:"+PORT);
-    });
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({force: true}).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on: http://localhost:"+PORT);
+  });
 });

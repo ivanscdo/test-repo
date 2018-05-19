@@ -1,2 +1,1 @@
-DROP DATABASE IF EXISTS test_repo_db;
-CREATE DATABASE test_repo_db;
+CREATE DATABASE bird_db;

@@ -1,5 +1,10 @@
+keyfile.json
+
 node_modules
 config/config.json
+
 notes.md
 keyfile.json
 keys.js
+
+schema.sql
